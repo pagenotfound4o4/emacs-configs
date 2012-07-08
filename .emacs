@@ -1,14 +1,15 @@
-﻿;;----------.emacs----------
-;;GNU Emacs 配置文件
-;;Author:Unlucky
-;;E-mail:unlucky1990@gmail.com
-;;Blog:http://unlucky.orgfree.com/blog
+﻿;;GNU Emacs 配置文件
+;;File: .emacs
+;;Author: Unlucky
+;;E-mail: unlucky1990@gmail.com
+;;Blog: http://unlucky.orgfree.com/blog
 
-;;----------环境配置(Windows)----------
-(setenv "HOME" "D:/Emacs")
-(setenv "PATH" "D:/Emacs")
-;;设置默认路径
-(setq default-directory "~/")
+;;----------环境配置----------
+(if (eq system-type 'windows-nt)
+    (progn (setenv "HOME" "D:/Emacs")
+	   (setenv "PATH" "D:/Emacs")
+	   ;;设置默认路径
+	   (setq default-directory "~/")))
 
 ;;----------基本设置----------
 ;;关闭启动画面
@@ -47,21 +48,24 @@
 (setq frame-title-format "emacs@%b")
 ;;设置major-mode为text-mode
 (setq default-major-mode 'text-mode)
-
-
-;;----------Windows配置----------
-;;设置字体
-(set-default-font "YaHei Consolas Hybrid-11")
+;;支持emacs和外部程序的粘贴
+(setq x-select-enable-clipboard t)
+;;设置默认tab宽度为4
+(setq tab-width 4
+      indent-tabs-mode t
+      c-basic-offset 4)
+;;设置HTML-mode的默认tab宽度为4
+(add-hook 'html-mode-hook
+	  (lambda()
+	    (setq sgml-basic-offset 4)
+	    (setq indent-tabs-mode t)))
+;;配置字体
+(if (eq system-type 'windows-nt)
+    (set-default-font "YaHei Consolas Hybrid-11"))
 ;;设置启动时位置及窗口大小
-(setq default-frame-alist '((top . 0)(left . 0)(width . 80)(height . 33)))
-
-;;----------Linux配置----------
-;;设置启动时位置及窗口大小
-;(setq default-frame-alist '((top . 0)(left . 0)(width . 80)(height . 30)))
-;;设置ibus-el
-;;(add-to-list 'load-path "~/.emacs.d/ibus-el")
-;;(require 'ibus)
-;;(add-hook 'after-init-hook 'ibus-mode-on)
+(if (eq system-type 'windows-nt)
+    (setq default-frame-alist '((top . 0)(left . 0)(width . 80)(height . 33)))
+  (setq default-frame-alist '((top . 0)(left . 0)(width . 80)(height . 30))))
 
 ;;----------插件配置----------
 ;;AUCTeX配置
@@ -69,7 +73,7 @@
 (load "auctex.el" nil t t)
 (load "preview-latex.el" nil t t)
 (if (string-equal system-type "windows-nt")
-	(require 'tex-mik))
+    (require 'tex-mik))
 
 ;;Auto-Complete配置
 (add-to-list 'load-path "~/.emacs.d/plugins/auto-complete/")
@@ -78,13 +82,25 @@
 (ac-config-default)
 
 ;;YASnippet配置
-(add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
+(add-to-list 'load-path "~/.emacs.d/plugins/yasnippet/")
 (require 'yasnippet)
 (require 'dropdown-list)
 (setq yas/prompt-functions '(yas/x-prompt
 			     yas/dropdown-prompt
 			     yas/completing-prompt))
 (yas/initialize)
-(yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets")
+(yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets/")
+
+;;IBus配置
+(if (eq system-type 'gnu/linux)
+    (progn (add-to-list 'load-path "~/.emacs.d/ibus-el")
+	   (require 'ibus)
+	   (add-hook 'after-init-hook 'ibus-mode-on)))
 
 ;;org-mode配置
+(add-to-list 'load-path "~/.emacs.d/org/")
+(require 'org)
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)

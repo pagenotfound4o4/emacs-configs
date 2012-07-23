@@ -1,8 +1,7 @@
 ﻿;;GNU Emacs 配置文件
-;;File: .emacs
 ;;Author: Unlucky
-;;E-mail: unlucky1990@gmail.com
 ;;Blog: http://unlucky.orgfree.com/blog
+
 
 ;;----------环境配置----------
 (if (eq system-type 'windows-nt)
@@ -11,7 +10,9 @@
 	   ;;设置默认路径
 	   (setq default-directory "~/")))
 
+
 ;;----------基本设置----------
+
 ;;关闭启动画面
 (setq inhibit-startup-message t)
 ;;在minibuffer里启用自动补全函数和变量
@@ -21,6 +22,8 @@
 ;;设置列号行号
 (setq column-number-mode t)
 (setq line-number-mode t)
+;;在左侧显示行号
+(global-linum-mode 'linum-mode)
 ;;设置C/C++默认格式
 (add-hook 'c-mode-common-hook (lambda()(c-set-style "stroustrup")))
 (add-hook 'c++-mode-common-hook (lambda()(c-set-style "stroustrup")))
@@ -66,8 +69,18 @@
 (if (eq system-type 'windows-nt)
     (setq default-frame-alist '((top . 0)(left . 0)(width . 80)(height . 33)))
   (setq default-frame-alist '((top . 0)(left . 0)(width . 80)(height . 30))))
+;;取消滚动栏
+(set-scroll-bar-mode nil)
+;;取消工具栏
+(tool-bar-mode -1)
+;;打开矩形选择模式
+(cua-selection-mode t)
+;;设置mark-set快捷键
+(global-set-key (kbd "S-SPC") 'set-mark-command)
+
 
 ;;----------插件配置----------
+
 ;;AUCTeX配置
 (add-to-list 'load-path "~/.emacs.d/plugins/auctex/site-lisp/site-start.d")
 (load "auctex.el" nil t t)
@@ -93,14 +106,22 @@
 
 ;;IBus配置
 (if (eq system-type 'gnu/linux)
-    (progn (add-to-list 'load-path "~/.emacs.d/ibus-el")
+    (progn (add-to-list 'load-path "~/.emacs.d/plugins/ibus-el")
 	   (require 'ibus)
 	   (add-hook 'after-init-hook 'ibus-mode-on)))
 
 ;;org-mode配置
-(add-to-list 'load-path "~/.emacs.d/org/")
+(add-to-list 'load-path "~/.emacs.d/plugins/org/")
 (require 'org)
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
+
+;;color-theme配置
+(add-to-list 'load-path "~/.emacs.d/plugins/color-theme/")
+(require 'color-theme)
+(eval-after-load "color-theme"
+   '(progn
+      (color-theme-initialize)
+      (color-theme-blackboard)))

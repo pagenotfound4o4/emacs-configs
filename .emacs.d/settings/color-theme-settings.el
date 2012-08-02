@@ -1,6 +1,7 @@
 ;;Color-ThemeÅäÖÃÎÄ¼ş
 ;;Version: 6.6.0
 ;;URL: http://www.nongnu.org/color-theme/
+
 ;(add-to-list 'load-path "~/.emacs.d/plugins/color-theme/")
 (require 'color-theme)
 (eval-after-load "color-theme"

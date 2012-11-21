@@ -4,7 +4,6 @@
 
 ;(add-to-list 'load-path "~/.emacs.d/plugins/tabbar/")
 (require 'tabbar)
-
 (tabbar-mode t)
 
 ;;ÉèÖÃ¿ì½İ¼ü

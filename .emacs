@@ -80,4 +80,6 @@
 ;;加载Tabbar-Mode配置文件
 (require 'tabbar-settings)
 
+;;加载nesC-Mode配置文件
+(require 'nesc-settings)
 

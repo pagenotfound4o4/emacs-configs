@@ -22,11 +22,15 @@ Blog: [http://unlucky.orgfree.com/blog](http://unlucky.orgfree.com/blog)
    增加ac-math.el, ac-math-helper-funcs.el
  - [Color-Theme](http://www.nongnu.org/color-theme/)<br/>
    Version: 6.6.0
- - [IBus-Mode](https://launchpad.net/ibus.el)
+ - [Highlight-Symbol] (http://nschum.de/src/emacs/highlight-symbol/)<br/>
+   Version: 1.1
+ - [IBus-Mode](https://launchpad.net/ibus.el)<br/>
    Version: 0.3.2
+ - [nesC-Mode](http://nesl.ee.ucla.edu/fw/torres/home/projects/tossim_gumstix/root/nesc-1.3.1/tools/editor-modes/emacs/new-nesc.el)<br/>
+   Version: Unknown
  - [Org-Mode](http://orgmode.org/)<br/>
    Version: 7.8.11
- - [Predictive](http://www.dr-qubit.org/emacs.php#predictive)
+ - [Predictive](http://www.dr-qubit.org/emacs.php#predictive)<br/>
    Version: 0.23.13
  - [Tabbar-Mode](https://github.com/davidswelt/aquamacs-emacs/blob/master/aquamacs/src/site-lisp/tabbar/tabbar.el)<br/>
    Version: 2.0

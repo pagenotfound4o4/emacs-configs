@@ -83,3 +83,5 @@
 ;;加载nesC-Mode配置文件
 (require 'nesc-settings)
 
+;;加载CEDET配置文件
+(require 'cedet-settings)

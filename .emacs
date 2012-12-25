@@ -1,6 +1,6 @@
 ﻿;;GNU Emacs 配置文件
 ;;Author: Unlucky
-;;Blog: http://unlucky.orgfree.com/blog
+;;Blog: http://blog.thebeyond.name
 
 
 ;;----------环境配置----------

@@ -1,7 +1,7 @@
 我的Emacs配置文件和插件
 =======================
 Author: Unlucky<br/>
-Blog: [http://unlucky.orgfree.com/blog](http://unlucky.orgfree.com/blog)
+Blog: [http://blog.thebeyond.name](http://blog.thebeyond.name)
 
 1、目录结构
 ----------------

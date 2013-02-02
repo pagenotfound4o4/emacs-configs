@@ -8,12 +8,17 @@
     (progn (setenv "HOME" "D:/Emacs")
            (setenv "PATH" "D:/Emacs")
            ;;设置默认路径
-           (setq default-directory "~/")))
+           (setq default-directory "~/")
+		   ;;设置启动emacs server
+		   (setq server-auth-dir "D:/Emacs/bin")
+		   (setq server-name "emacs-server-file")
+		   (server-start)))
 
 ;;递归加载.emacs.d文件夹下所有子目录
 (let ((default-directory "~/.emacs.d/"))
      (normal-top-level-add-subdirs-to-load-path))
 
+	 
 ;;----------基本设置----------
 ;;加载外观配置文件
 (require 'appearance-settings)
@@ -84,4 +89,4 @@
 (require 'nesc-settings)
 
 ;;加载CEDET配置文件
-(require 'cedet-settings)
+;(require 'cedet-settings)
